@@ -1,0 +1,14 @@
+{
+  "name": "mern-booking-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently -n \"BACKEND,FRONTEND\" -c \"red,blue\" \"npm run start-backend\" \"npm run start-frontend\"",
+    "e2e": "concurrently -n \"BACKEND_E2E,FRONTEND\" -c \"red,blue\" \"npm run start-backend-e2e\" \"npm run start-frontend\"",
+    "start-backend": "cd backend && npm run dev",
+    "start-backend-e2e": "cd backend && npm run e2e",
+    "start-frontend": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
