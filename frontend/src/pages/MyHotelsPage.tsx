@@ -4,14 +4,16 @@ import { BsBuilding, BsMap } from "react-icons/bs";
 
 import * as apiClient from "../api-client";
 import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
+import { useAppContext } from "../contexts/AppContext";
 
 const MyHotelsPage = () => {
+  const { showToast } = useAppContext();
   const { data: hotelData } = useQuery(
     "fetchMyHotels",
     apiClient.fetchMyHotels,
     {
-      onError: () => {
-        setToast("");
+      onError: async (error: Error) => {
+        showToast({ message: error.message, type: "ERROR" });
       },
     }
   );
